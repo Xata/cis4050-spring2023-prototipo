@@ -130,13 +130,13 @@ def delete_box():
     pass
 
 # Extinguisher CRUD operations
-def read_extinguishers(database: Session, offset: int = 0, limit: int = 100):
+def get_extinguishers(database: Session, offset: int = 0, limit: int = 100):
     """
     Get a list of extinguishers from the database.
     """
     return database.query(models.Extinguisher).offset(offset).limit(limit).all()
 
-def read_extinguisher_by_id(database: Session, extinguisher_id: int):
+def get_extinguisher_by_id(database: Session, extinguisher_id: int):
     """
     Retrieve an extinguisher by ID.
     """
@@ -152,13 +152,15 @@ def create_extinguisher(database: Session, extinguisher: schemas.ExtinguisherCre
     box = database.query(models.Box).filter(models.Box.id == box_id).first()
     # If the box doesn't exist put the extinguisher in the default box (warehouse)
     if not box:
-        database_extinguisher = models.Extinguisher(**extinguisher.dict(), box_id=1)
+        database_extinguisher = models.Extinguisher(**extinguisher.dict())
+        database_extinguisher.assigned_box_id = 1
         database.add(database_extinguisher)
         database.commit()
         database.refresh(database_extinguisher)
         return database_extinguisher
     else:
-        database_extinguisher = models.Extinguisher(**extinguisher.dict(), box_id=box.id)
+        database_extinguisher = models.Extinguisher(**extinguisher.dict())
+        database_extinguisher.assigned_box_id = box_id
         database.add(database_extinguisher)
         database.commit()
         database.refresh(database_extinguisher)
@@ -176,20 +178,14 @@ def delete_extinguisher_by_id(database: Session, extinguisher_id: int):
         return None
 
 # Ticket CRUD operations
-def read_tickets():
+# TODO: Implement the ticket system
+def get_tickets():
     pass
 
 def create_ticket():
     pass
 
 def update_ticket_status():
-    pass
-
-# Misc CRUD operations
-def add_extinguisher_to_box():
-    pass
-
-def remove_extinguisher_from_box():
     pass
 
 

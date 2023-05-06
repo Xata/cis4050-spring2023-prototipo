@@ -5,6 +5,7 @@ Contains utilities for different aspects of the application that I didn't know w
 """
 
 # Import modules and libraries
+from datetime import datetime
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
@@ -103,6 +104,33 @@ def init_test_database_data() -> None:
         )
         test_user = crud.create_user(database=database_session, user_in=new_test_user_data)
 
+    # Create some test boxes
+    for box in range(2, 10):
+        test_box = crud.get_box_by_id(database=database_session, box_id=box)
+        if not test_box:
+            new_box_data = schemas.BoxCreate(
+                box_size="standard",
+                building="Administration",
+                room="24" + str(box),
+                location_description="Near room 24" + str(box),
+                is_damaged=False,
+            )
+            test_box = crud.create_box(database=database_session, box_in=new_box_data)
+
+    # Create some test extinguishers
+    # 15 is the last number to show that wrong box_ids just get placed into the default warehouse
+    for ext in range(2, 15):
+        test_ext = crud.get_extinguisher_by_id(database=database_session, extinguisher_id=ext)
+        if not test_ext:
+            new_test_ext_data = schemas.ExtinguisherCreate(
+                manufacturer_name="Advanced Firefighting Systems",
+                supplier_name="IgnisPro",
+                serial_number="48329" + str(ext),
+                purchase_date=datetime.now() ,
+                extinguisher_type=enums.FireClass.ABC,
+                is_active=True,
+            )
+            test_ext = crud.create_extinguisher(database=database_session, extinguisher=new_test_ext_data, box_id=ext)
 
     database_session.close()
 
