@@ -1,6 +1,24 @@
+<div style="text-align: center;">
+
 # cis4050-spring2023-prototipo
 
+</div>
+
 This project is a prototype for a Fire Extinguisher Management System, created as part of the CIS4050 class during the Spring 2023 semester. Our group was called Team Asti, hence why we used prototipo (that's prototype in Italian). The prototype demonstrates the basic functionality of the application, which is designed to help manage and maintain fire extinguishers in a variety of settings. Users can add, edit, and delete extinguishers, as well as track maintenance and inspections through a ticketing system. This prototype serves as a proof-of-concept for the larger project, which aims to provide a comprehensive solution for campus fire safety management.
+<br></br>
+<div style="text-align: center;">
+
+![GitHub top language](https://img.shields.io/github/languages/top/Xata/cis4050-spring2023-prototipo?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/Xata/cis4050-spring2023-prototipo?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/Xata/cis4050-spring2023-prototipo?style=plastic)
+
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=plastic&logo=sqlite&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=plastic&logo=fastapi)
+![JWT](https://img.shields.io/badge/JWT-black?style=plastic&logo=JSON%20web%20tokens)
+![Python](https://img.shields.io/badge/python-3670A0?style=plastic&logo=python&logoColor=ffdd54)
+
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=plastic&logo=visual-studio-code&logoColor=white)
+</div>
 
 ## Disclaimer
 
